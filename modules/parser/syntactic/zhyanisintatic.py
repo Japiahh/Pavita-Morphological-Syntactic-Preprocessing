@@ -284,7 +284,3 @@ class ppront:
             print(f"[PANIC] '{output_txt_path}'")
         except Exception as e:
             print(f"[ERROR] {e}\nFix kamu ngerusak sesuatu tanpa sadar.")
-
-
-
-    
