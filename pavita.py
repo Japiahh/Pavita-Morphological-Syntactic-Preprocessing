@@ -30,28 +30,22 @@ class PavitaIMP:
 
     def purify_sentence(self, text):
         try:
-            # 1. Tokenizing
             raw_tokens = self.tokenizer.tokenize(text)
-            
-            # 2. Tagging & Merging
+
             if self.tagger:
                 tagged_output = self.tagger.posttag(raw_tokens)
-                # Ambil token yang sudah di-merge dari hasil tagging
                 final_tokens = [t[0] for t in tagged_output]
             else:
                 tagged_output = []
                 final_tokens = raw_tokens
 
-            # 2.5 Sasmita Check
             if self.tag_checker and tagged_output:
                 self.tag_checker.check_and_collect(tagged_output)
 
-            # 3. Syntactic Parsing
             syntax_tree_output = []
             if self.syn_parser and tagged_output:
                 syntax_tree_output = self.syn_parser.syntactic_parse(tagged_output)
 
-            # 4. Dependency Parsing
             dep_graph_output = []
             if self.dep_parser and syntax_tree_output:
                 raw_dep_graph = self.dep_parser.dependency_parse(syntax_tree_output)
@@ -114,3 +108,4 @@ if __name__ == "__main__":
     pavita = PavitaIMP()
 
     pavita.process_file("output_clean.txt", os.path.join(OUTPUT_FOLDER, "pavita_result.json"))
+
