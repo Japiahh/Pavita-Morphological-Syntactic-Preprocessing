@@ -1,2 +1,2 @@
-# Pavita : Indonesian Morhological Preprocessing (IMP)
+# Pavita : Indonesian Morphological Preprocessing (IMP)
 Custom Preprocessing for Vita Project
