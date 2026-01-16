@@ -9,10 +9,7 @@ from modules.parser.depedency.zhyanidepedency import ZhyaniDependencyParser
     
 from utils.sasmita import SasmitaTagChecker
 
-class PavitaMSP:
-    """
-    Pavita (Purified/Refined) MSP Pipeline.
-    """
+class PavitaIMP:
     def __init__(self, config=None):
         print("\n--- Initializing Pavita MSP Engine ---")
         self.config = {
@@ -23,7 +20,6 @@ class PavitaMSP:
         }
         if config: self.config.update(config)
         
-        # Inisialisasi Modul
         self.tokenizer = ChakariaTokenizer()
         self.tagger = ErisaPOSTagger() if self.config['use_tagger'] else None
         self.tag_checker = SasmitaTagChecker() if (self.config['use_tagger'] and self.config['use_checker']) else None
@@ -33,9 +29,6 @@ class PavitaMSP:
         print("--- Engine Ready ---\n")
 
     def purify_sentence(self, text):
-        """
-        Memproses satu kalimat.
-        """
         try:
             # 1. Tokenizing
             raw_tokens = self.tokenizer.tokenize(text)
@@ -62,10 +55,6 @@ class PavitaMSP:
             dep_graph_output = []
             if self.dep_parser and syntax_tree_output:
                 raw_dep_graph = self.dep_parser.dependency_parse(syntax_tree_output)
-                
-                # --- FILTERING PENTING ---
-                # Hapus hasil dependensi yang kosong (text length 0)
-                # Ini memperbaiki bug "sentence_id: 2" dengan text ""
                 if isinstance(raw_dep_graph, list):
                     for dep in raw_dep_graph:
                         if isinstance(dep, dict) and dep.get("text", "").strip():
@@ -73,7 +62,6 @@ class PavitaMSP:
                 else:
                     dep_graph_output = raw_dep_graph
 
-            # Susun Result Sesuai Template
             result = {
                 "raw_text": text,
                 "token": final_tokens,
@@ -116,17 +104,13 @@ class PavitaMSP:
         if output_filepath:
             print(f"Menyimpan JSON ke: {output_filepath}")
             with open(output_filepath, 'w', encoding='utf-8') as f:
-                # ensure_ascii=False agar huruf terbaca normal
-                # indent=4 agar rapi
                 json.dump(results, f, indent=4, ensure_ascii=False)
             print("Selesai.")
 
-# --- Run ---
 if __name__ == "__main__":
     OUTPUT_FOLDER = "result"
     if not os.path.exists(OUTPUT_FOLDER): os.makedirs(OUTPUT_FOLDER)
 
-    pavita = PavitaMSP()
-    
-    # Pastikan nama file input sesuai
+    pavita = PavitaIMP()
+
     pavita.process_file("output_clean.txt", os.path.join(OUTPUT_FOLDER, "pavita_result.json"))
