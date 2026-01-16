@@ -116,67 +116,7 @@ pavita.process_file("input.txt", "results/output.json")
                         ]
                     ]
                 ],
-                [
-                    "PUNCT",
-                    [
-                        [
-                            ".",
-                            "SYM-DOT"
-                        ]
-                    ]
-                ],
-                [
-                    [
-                        "NP",
-                        [
-                            [
-                                "aku",
-                                "PRP-PER"
-                            ]
-                        ]
-                    ],
-                    [
-                        "VP",
-                        [
-                            [
-                                "ingin",
-                                "VB-MODL"
-                            ],
-                            [
-                                "tahu",
-                                "VB-STAT"
-                            ],
-                            [
-                                "NP",
-                                [
-                                    [
-                                        "semua",
-                                        "DT-QUANT"
-                                    ]
-                                ]
-                            ],
-                            [
-                                "PP",
-                                [
-                                    [
-                                        "tentang",
-                                        "IN-COMP"
-                                    ],
-                                    [
-                                        "NP",
-                                        [
-                                            [
-                                                "harimu",
-                                                "NN-COM"
-                                            ]
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                ...
         ],
         "dependency_graph": [
             {
@@ -212,5 +152,4 @@ pavita.process_file("input.txt", "results/output.json")
 ```
 
 ---
-
 Built with Risa and coffee, thanks Gemie. 
