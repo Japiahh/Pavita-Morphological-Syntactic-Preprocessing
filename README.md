@@ -20,12 +20,12 @@ Pavita/
 |--- modules/
 |   |--- tokenizer/chakaria.py       # Tokenization Logic
 |   |--- postag/erisa.py             # POS Tagging & Fusion Logic
-|       |--- data/                   # Lexicon (JSON) & Regex Rules
+|   |    |--- data/                  # Lexicon (JSON) & Regex Rules
 |   |--- parser/
-|       |--- sintatic/zhyanisintatic.py
-|       |--- depedency/zhyanidepedency.py
+|        |--- sintatic/zhyanisintatic.py
+|        |--- depedency/zhyanidepedency.py
 |--- utils/
-|   |--- sasmita.py                  # Quality Control & Logging
+|    |--- sasmita.py                 # Quality Control & Logging
 |--- Pavita.py                       # Main Entry Point                      
 |--- README.md                       # Documentation
 ```
